@@ -1,0 +1,68 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.div{
+    background-color: beige;
+    position: absolute;
+    margin-left: 15%;
+    top: 19%;
+    width: 45%;
+}
+@media screen and (max-width:1080px) {
+    .div{
+        width: 96%;
+        margin: 0;
+    }
+}
+.submitbtnofmenu {
+    margin: 0;
+    height: auto;
+    background: transparent;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    color: darkgray;
+}
+
+/* submitbtnofmenu styling */
+.submitbtnofmenu {
+    --border-right: 6px;
+    --text-stroke-color: rgba(255, 255, 255, 0.6);
+    --animation-color: black;
+    --fs-size: 1.5em;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: var(--fs-size);
+    font-family: "Arial";
+    position: relative;
+    text-transform: uppercase;
+    color: darkgray;
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+
+/* this is the text, when you hover on button1 */
+.hover-text {
+    position: absolute;
+    box-sizing: border-box;
+    /* content: attr(data-text); */
+    color: var(--animation-color);
+    width: 0%;
+    inset: 0;
+    border-right: var(--border-right) solid var(--animation-color);
+    overflow: hidden;
+    transition: 0.5s;
+    /* font-size: var(--fs-size); */
+    -webkit-text-stroke: 1px var(--animation-color);
+}
+
+/* hover */
+.submitbtnofmenu:hover .hover-text {
+    width: 100%;
+    filter: drop-shadow(0 0 23px var(--animation-color))
+}
+.error{
+    color: red;
+}

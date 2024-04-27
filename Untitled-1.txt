@@ -1,0 +1,47 @@
+<?php
+session_start();
+include_once('conn.php'); 
+
+if (isset($_POST['update_profile'])) {
+    $new_name = $_POST['new_name'];
+    $new_email = $_POST['new_email'];
+    $folder = $_SESSION['user_img']; 
+
+
+    if (!empty($_FILES['new_img']['name']) && in_array(strtolower(pathinfo($_FILES['new_img']['name'], PATHINFO_EXTENSION)), ['jpg', 'jpeg', 'png','webp'])) {
+        $new_img = $_FILES['new_img']['name'];
+        $tempname = $_FILES['new_img']['tmp_name']; 
+        $folder = "uploaded/".$new_img;
+        move_uploaded_file($tempname, $folder);
+    }
+
+    $update_query = "UPDATE sign_up1 SET user_name='$new_name', user_email='$new_email', user_img='$folder' WHERE sr='{$_SESSION['user_id']}'";
+
+    if ($conn->query($update_query) === TRUE) {
+        echo "Record updated successfully";
+        $_SESSION['user_name'] = $new_name;
+        $_SESSION['user_email'] = $new_email;
+        $_SESSION['user_img'] = $folder;
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+}
+?>
+
+<div class="p-info d-none">
+    <h1>PERSONAL INFORMATION</h1>
+    <hr>
+    <div class="d-flex justify-content-between">
+        <?php if (!empty($_SESSION['user_img'])): ?>
+            <img src="<?php echo $_SESSION['user_img']; ?>" alt="Profile Image" style="width: 25%;">
+        <?php else: ?>
+            <img src="1-1s.webp" alt="Default Profile Image" style="width: 25%;">
+        <?php endif; ?>
+        <form method="post" action="" enctype="multipart/form-data">
+            <input type="text" name="new_name" placeholder="Enter new name" value="<?php echo $_SESSION['user_name']; ?>">
+            <input type="email" name="new_email" placeholder="Enter new email" value="<?php echo $_SESSION['user_email']; ?>">
+            <input type="file" name="new_img">
+            <input type="submit" name="update_profile" value="Update">
+        </form>
+    </div>
+</div>

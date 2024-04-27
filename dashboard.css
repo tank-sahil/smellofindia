@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.maind{
+    display: flex;
+    justify-content: space-around;
+
+}
+.col-sm-3{
+    height: 150px;
+    
+}
+.subd
+{
+    background-color :cornflowerblue;
+    display: inline;
+}
+.subd1{
+    background-color: gold;
+    display: inline;
+}
+
+.subd2{
+    background-color: green;
+    display: inline;
+}
+.subd3{
+    background-color: rgb(255, 33, 33);
+    display: inline;
+}
+.subd4{
+    background-color:darkseagreen;
+    display: inline;
+}
+h1 svg{
+    float: right;
+}
+.rb a h4{
+    color: #111;
+}
+.query{
+    overflow-x: auto;
+}
+.col-sm-3{
+    transition: all 0.30s ease-out;
+
+}
+.col-sm-3:hover{
+    transform: scale(1.05);
+    transition: all 0.40s ease-out;
+}
